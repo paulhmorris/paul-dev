@@ -1,12 +1,19 @@
 ---
-const skills = ["TypeScript 💕", "React", "Next.js", "Node", "SQL"];
+import heart from "../assets/heart.svg";
 ---
 
-<div>
-  <h2 class="mb-2 text-xl title">Tech</h2>
+<section class="mt-16">
+  <h2 class="mb-4 text-xl title">Tech</h2>
   <ul
     class="sm:space-x-4 flex flex-col sm:flex-row sm:[&>li]:after:content-['_|'] sm:[&>li:last-child]:after:content-none"
   >
-    {skills.map((skill) => <li>{skill}</li>)}
+    <li class="flex items-center">
+      <span>TypeScript</span>
+      <img src={heart} class="h-4 w-4 mx-2" />
+    </li>
+    <li>React</li>
+    <li>Next</li>
+    <li>Node</li>
+    <li>SQL</li>
   </ul>
-</div>
+</section>
