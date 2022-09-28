@@ -1,0 +1,12 @@
+---
+const skills = ["TypeScript 💕", "React", "Next.js", "Node", "SQL"];
+---
+
+<div>
+  <h2 class="mb-2 text-xl title">Tech</h2>
+  <ul
+    class="sm:space-x-4 flex flex-col sm:flex-row sm:[&>li]:after:content-['_|'] sm:[&>li:last-child]:after:content-none"
+  >
+    {skills.map((skill) => <li>{skill}</li>)}
+  </ul>
+</div>
