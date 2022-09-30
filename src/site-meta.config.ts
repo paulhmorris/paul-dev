@@ -1,6 +1,6 @@
 const siteMeta = {
   title: "Paul Morris",
-  description: "Frontend Engineer working in React and TypeScript",
+  description: "Frontend Developer working in React and TypeScript",
   lang: "en-US",
   ogLocale: "en_US",
   themeColorLight: "#fafafa",

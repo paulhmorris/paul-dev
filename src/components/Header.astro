@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 const url = new URL(Astro.request.url);
 ---
 
-<header class="relative z-50 mb-28 flex items-center sm:items-start">
+<header class="relative z-50 sm:mb-24 mb-12 flex items-center sm:items-start">
   <span>
     <a
       href="/"
@@ -13,23 +13,6 @@ const url = new URL(Astro.request.url);
     >
       <span class="text-xl font-bold sm:text-2xl">Paul Morris</span>
     </a>
-    <!-- <nav
-      id="navigation-menu"
-      aria-label="Main"
-      class="mt-1 -ml-4 hidden text-accent sm:flex sm:divide-x sm:divide-dashed sm:divide-accent"
-    >
-      <a
-        class="px-4 sm:hover:underline"
-        href="/"
-        aria-current={url.pathname === "/" ? "page" : false}>Home</a
-      >
-      <a
-        class="px-4 sm:hover:underline"
-        href="/posts"
-        aria-current={url.pathname === "/posts" ? "page" : false}
-        >Blog
-      </a>
-    </nav> -->
   </span>
   <ThemeToggle />
 </header>

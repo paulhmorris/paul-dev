@@ -1,53 +1,74 @@
 ---
+import BlogPostPreview from "@/components/BlogPostPreview";
 import Skills from "@/components/Skills";
 import PageLayout from "@/layouts/Base";
-// import type { Post } from "@/types";
-// import { sortMDByDate } from "@/util";
+import type { Post } from "@/types";
+import { sortMDByDate } from "@/util";
+import { Icon } from "astro-icon";
 import resume from "../assets/resume.pdf";
 
 const meta = { title: "Home" };
 
-// const MAX_POSTS = 10;
-// const allPosts = await Astro.glob<Post>("./posts/*.mdx");
-// const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const MAX_POSTS = 3;
+const allPosts = await Astro.glob<Post>("./posts/*.mdx");
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={meta}>
   <section>
     <h1 class="mb-6 title">Hello!</h1>
     <p class="mb-12">
-      I’m Paul - a frontend engineer currently building things with <a
+      I’m Paul - a frontend developer currently building things with <a
         href="https://tidecleaners.com/en-us"
-        class="cactus-link"
+        class="link"
         rel="noreferrer"
         target="_blank">Tide Cleaners</a
       >. A few years ago I was in working in customer service and I decided to
-      learn how to code at <a
+      learn how to code with <a
         href="https://teamtreehouse.com/techdegree/front-end-web-development"
-        class="cactus-link"
+        class="link"
         rel="noreferrer"
         target="_blank">Treehouse</a
-      >. I've worked on all kinds of projects from enterprise .NET applications
-      to small React apps. I love the web and talking about new technologies
+      >. I've been a developer on all kinds of projects from enterprise .NET
+      applications to small React apps.
     </p>
     <div class="mb-12">
       <span>•</span>
-      <a class="cactus-link" href={resume} download>Download my resume!</a>
+      <a class="link" href={resume} download>Download my resume!</a>
     </div>
   </section>
   <section class="mb-12">
     <Skills />
   </section>
-  <!-- <section aria-label="Blog post list">
-    <h2 class="mb-4 text-xl title">Posts</h2>
-    <ul class="space-y-4 sm:space-y-2">
-      {
-        allPostsByDate.map((p) => (
-          <li class="[&_q]:w-full flex flex-wrap items-center gap-x-2">
-            <BlogPostPreview post={p} as="h2" />
-          </li>
-        ))
-      }
-    </ul>
-  </section> -->
+  {
+    process.env.NODE_ENV !== "production" && (
+      <section aria-label="Blog post list">
+        <div class="mb-4 mr-2 flex items-baseline gap-2">
+          <h2 class="title inline-block text-xl">Posts</h2>
+          <div class="flex items-center">
+            <a
+              class="hover:text-accent peer p-2 text-sm leading-7 transition duration-100"
+              href="/posts"
+            >
+              See all
+            </a>
+            <Icon
+              pack="pixelarticons"
+              name="arrow-right"
+              class="text-accent h-4 w-4 -translate-x-2 opacity-0 transition duration-500 ease-[cubic-bezier(.15,.61,.14,1)] peer-hover:-translate-x-1 peer-hover:opacity-100"
+            />
+          </div>
+        </div>
+        <ul class="mb-4 flex flex-col flex-wrap gap-4 sm:flex-row">
+          {allPostsByDate.map((p) => (
+            <BlogPostPreview post={p} withDesc />
+          ))}
+        </ul>
+        <a
+          href="/posts"
+          class="block text-right text-sm text-gray-500"
+        >{`...and ${allPosts.length - MAX_POSTS} more`}</a>
+      </section>
+    )
+  }
 </PageLayout>

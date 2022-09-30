@@ -24,12 +24,6 @@ module.exports = {
         toggle:
           "0px 2.5px 6.5px rgba(0, 0, 0, 0.15), 0px 2.5px 0.8px rgba(0, 0, 0, 0.06);",
       },
-      animation: {
-        pop: "pop 200ms ease-out",
-      },
-      keyframes: {
-        pop: { "60%": { transform: "scale(1.1)" } },
-      },
       typography: (theme) => ({
         cactus: {
           css: {

@@ -6,21 +6,31 @@ export interface Props extends IElement {
   withDesc?: boolean;
 }
 
-const { post, as: Element = "div", withDesc = false } = Astro.props as Props;
+const { post, withDesc = false } = Astro.props as Props;
 const { publishDate } = post.frontmatter;
 const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = getLocaleTime(date, { month: "short" });
 ---
 
-<time {datetime} class="min-w-[120px] text-gray-500">{postDate}</time>
-<Element>
-  <a href={post.url} class="inline-block cactus-link line-clamp-1">
-    {post.frontmatter.title}
+<li
+  class="flex-[0_1_32%] cursor-pointer border-gray-600 rounded-lg border border-dashed transition hover:border-link hover:shadow-lg hover:shadow-link/10 focus-visible:outline-none focus-visible:border-link focus-visible:shadow-lg focus-visible:shadow-link/10"
+>
+  <a class="block w-full h-full rounded" href={post.url}>
+    <div class="px-6 py-5 flex flex-col">
+      <time datetime={datetime} class="text-sm mb-1 min-w-[120px] text-gray-500"
+        >{postDate}
+      </time>
+      <h2 class="text-accent font-bold mb-2">
+        {post.frontmatter.title}
+      </h2>
+      {
+        withDesc && (
+          <q class="line-clamp-3 block text-sm italic">
+            {post.frontmatter.description}
+          </q>
+        )
+      }
+    </div>
   </a>
-</Element>
-{
-  withDesc && (
-    <q class="block italic line-clamp-3">{post.frontmatter.description}</q>
-  )
-}
+</li>

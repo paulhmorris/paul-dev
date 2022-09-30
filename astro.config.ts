@@ -8,11 +8,16 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   markdown: {
     shikiConfig: {
-      theme: "nord",
+      theme: "material-palenight",
       wrap: true,
     },
   },
-  site: "https://paulmorris.dev",
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
+  },
+  site: "https://www.paulmorris.dev",
   integrations: [
     mdx({}),
     tailwind({

@@ -8,7 +8,7 @@
     --theme-bg: 0 0% 98%;
     --theme-link: 272 100% 63%;
     --theme-text: 202 10.5% 14.9%;
-    --theme-accent: 351 65.9% 48.2%;
+    --theme-accent: 163 36% 54%;
     --theme-accent-2: 0 0% 6.7%;
     --theme-quote: 351 65.9% 48.2%;
     --theme-menu-bg: hsl(0 0% 98% / 0.85);
@@ -19,7 +19,7 @@
     --theme-bg: 210 6.5% 12.2%;
     --theme-link: 272 100% 63%;
     --theme-text: 220 2.9% 79.4%;
-    --theme-accent: 159 62.8% 45.3%;
+    --theme-accent: 163 36% 54%;
     --theme-accent-2: 0 0% 93.3%;
     --theme-quote: 102 100% 85.7%;
     --theme-menu-bg: hsl(210 6.5% 12.2% / 0.85);
@@ -30,13 +30,17 @@
   }
 
   html body {
-    @apply mx-auto flex h-full max-w-4xl flex-col bg-bgColor px-8 pt-16 font-mono text-lg font-normal text-textColor antialiased sm:text-base;
+    @apply mx-auto flex h-full max-w-4xl flex-col bg-bgColor p-8 font-mono text-lg font-normal text-textColor antialiased sm:pt-16 sm:text-base;
+  }
+
+  :focus-visible {
+    @apply outline-dashed outline-1 outline-offset-4 outline-link;
   }
 }
 
 @layer components {
-  .cactus-link {
-    @apply relative shadow-border-b-2 shadow-link hover:shadow-border-b-3 hover:shadow-link sm:py-0;
+  .link {
+    @apply relative shadow-border-b-2 shadow-link sm:py-0;
   }
 
   .title {

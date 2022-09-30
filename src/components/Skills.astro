@@ -1,18 +1,19 @@
 ---
-import heart from "../assets/heart.svg";
+import { Icon } from "astro-icon";
 ---
 
 <section class="mt-16">
   <h2 class="mb-4 text-xl title">Tech</h2>
   <ul
-    class="sm:space-x-4 flex flex-col sm:flex-row sm:[&>li]:after:content-['_|'] sm:[&>li:last-child]:after:content-none"
+    class="grid gap-4 grid-cols-2 sm:flex flex-wrap sm:[&>li]:border-r sm:[&>li]:border-dashed sm:[&>li]:pr-4 sm:[&>li:last-child]:border-0"
   >
     <li class="flex items-center">
       <span>TypeScript</span>
-      <img src={heart} class="h-4 w-4 mx-2" />
+      <Icon pack="pixelarticons" name="heart" class="text-link ml-2 h-4 w-4" />
     </li>
     <li>React</li>
-    <li>Next</li>
+    <li>Remix</li>
+    <li>Next.js</li>
     <li>Node</li>
     <li>SQL</li>
   </ul>
