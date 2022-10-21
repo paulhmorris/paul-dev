@@ -30,7 +30,7 @@
   }
 
   html body {
-    @apply mx-auto flex h-full max-w-4xl flex-col bg-bgColor p-8 font-mono text-lg font-normal text-textColor antialiased sm:pt-16 sm:text-base;
+    @apply mx-auto flex h-full max-w-4xl flex-col bg-bgColor p-8 font-sans text-lg font-normal text-textColor antialiased sm:pt-16;
   }
 
   :focus-visible {

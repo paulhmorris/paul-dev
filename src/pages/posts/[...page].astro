@@ -73,11 +73,11 @@ const paginationProps = {
               />
             </div>
           </div>
-          <ul class="text-bgColor flex flex-wrap gap-2 sm:justify-between">
+          <ul class="text-bgColor flex flex-wrap gap-2">
             {allTags.map((tag) => (
               <li>
                 <a
-                  class="bg-accent flex items-center justify-center rounded-lg p-1"
+                  class="bg-accent flex items-center justify-center rounded-lg p-1 font-mono text-sm"
                   href={`/tags/${tag}`}
                   aria-label={`View all posts with the tag: ${tag}`}
                 >

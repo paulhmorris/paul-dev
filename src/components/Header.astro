@@ -1,6 +1,6 @@
 ---
+import { Icon } from "astro-icon";
 import ThemeToggle from "./ThemeToggle.astro";
-
 const url = new URL(Astro.request.url);
 ---
 
@@ -8,10 +8,17 @@ const url = new URL(Astro.request.url);
   <span>
     <a
       href="/"
-      class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
+      class="inline-flex items-center sm:relative gap-3"
       aria-current={url.pathname === "/" ? "page" : false}
     >
-      <span class="text-xl font-bold sm:text-2xl">Paul Morris</span>
+      <Icon
+        pack="pixelarticons"
+        name="zap"
+        class="h-8 w-8 inline-block"
+        alt=""
+        aria-hidden="true"
+      />
+      <span class="text-xl font-bold sm:text-2xl font-mono">Paul Morris</span>
     </a>
   </span>
   <ThemeToggle />

@@ -16,7 +16,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={meta}>
   <section>
-    <h1 class="mb-6 title">Hello!</h1>
+    <h1 class="mb-6 title font-mono">Hello!</h1>
     <p class="mb-12">
       I’m Paul - a frontend developer currently building things with <a
         href="https://tidecleaners.com/en-us"
@@ -30,7 +30,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
         rel="noreferrer"
         target="_blank">Treehouse</a
       >. I've been a developer on all kinds of projects from enterprise .NET
-      applications to small React apps.
+      applications to large React apps.
     </p>
     <div class="mb-12">
       <span>•</span>
@@ -64,10 +64,10 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
             <BlogPostPreview post={p} withDesc />
           ))}
         </ul>
-        <a
-          href="/posts"
-          class="block text-right text-sm text-gray-500"
-        >{`...and ${allPosts.length - MAX_POSTS} more`}</a>
+        <a href="/posts" class="block text-right text-sm text-gray-500">
+          {allPosts.length - MAX_POSTS > 0 &&
+            `... and ${allPosts.length - MAX_POSTS} more`}
+        </a>
       </section>
     )
   }
