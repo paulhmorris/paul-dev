@@ -1,0 +1,105 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import Card from "~/components/Card.astro";
+
+import FormattedDate from "~/components/FormattedDate.astro";
+import Link from "~/components/Link.astro";
+import Tag from "~/components/Tag.astro";
+import PageHeading from "~/components/common/PageHeading.astro";
+import { ITEMS_PER_PAGE, SITE_META } from "~/consts";
+import { excludeDrafts, sortBlogPosts } from "~/functions";
+import RootLayout from "~/layouts/RootLayout.astro";
+
+const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
+---
+
+<RootLayout title={SITE_META.title} description={SITE_META.description}>
+  <div>
+    <div class="space-y-8 sm:pt-6">
+      <PageHeading>Hey!</PageHeading>
+      <p class="text-lg leading-7 text-gray-600 dark:text-gray-400">
+        I’m Paul, a software engineer based in Dallas, TX. I'm building web applications for Tide Cleaners that are used by thousands of customers every day. I'm passionate about the Web and using The Platform to build performant,
+        resilient, and scalable experiences. When I'm not coding, I'm probably playing guitar, biking, or hanging out with my family.
+      </p>
+      <div>
+        <p class="font-medium text-indigo-500 dark:text-indigo-400">Using</p>
+        <p class="tracking-wide">TypeScript | React | Remix | Next.js | Node.js | SQL</p>
+      </div>
+      <div>
+        <p class="font-medium text-indigo-500 dark:text-indigo-400">Learning</p>
+        <p class="tracking-wide">Go | AWS | Astro</p>
+      </div>
+    </div>
+
+    <section class="mt-6 sm:mt-12">
+      <h2 class="mb-4 text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-3xl">Projects</h2>
+      <Card title="Machine Manager" href="https://machine-management.vercel.app/">
+        <p class="prose text-gray-500 dark:text-gray-400">A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript.</p>
+        <p class="prose mt-2 text-gray-500 dark:text-gray-400">
+          Click "admin" and log in with username <code>tmfd@remix.run</code> and password <code>password</code>. Go to Invoices and finish the open invoice. Try adding various charges!
+        </p>
+      </Card>
+    </section>
+
+    <section class="mt-12 sm:mt-24">
+      <h2 class="mb-4 text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-3xl">Blog</h2>
+      <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+        {
+          posts.length
+            ? posts.slice(0, ITEMS_PER_PAGE).map((post) => {
+                const { date, title, summary, tags } = post.data;
+                return (
+                  <li class="py-4 first:-mt-4">
+                    <article>
+                      <div class="space-y-2 xl:grid xl:grid-cols-7 xl:items-baseline xl:space-y-0">
+                        <dl>
+                          <dt class="sr-only">Published on</dt>
+                          <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                            <FormattedDate date={date} />
+                          </dd>
+                        </dl>
+                        <div class="space-y-5 xl:col-span-4">
+                          <div class="space-y-6">
+                            <div>
+                              <h2 class="text-2xl font-bold leading-8 tracking-tight">
+                                <Link href={`/blog/${post.slug}`} class="text-gray-900 dark:text-gray-100">
+                                  {title}
+                                </Link>
+                              </h2>
+                              <div class="flex flex-wrap">
+                                {tags.map(({ slug }) => (
+                                  <Tag slug={slug} />
+                                ))}
+                              </div>
+                            </div>
+                            <div class="prose max-w-none text-gray-500 dark:text-gray-400">{summary}</div>
+                          </div>
+                          <div class="text-base font-medium leading-6">
+                            <Link href={`/blog/${post.slug}`} class="group flex items-center gap-1 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label={`Read "${title}"`}>
+                              <span>Read more</span>
+                              <Icon name="tabler:arrow-narrow-right" class="transition duration-100 group-hover:translate-x-1" />
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                );
+              })
+            : null
+        }
+      </ul>
+    </section>
+  </div>
+  {
+    posts.length > ITEMS_PER_PAGE && (
+      <div class="flex justify-end text-base font-medium leading-6">
+        <Link href="/blog" class="flex items-center gap-1 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="All posts">
+          <span>All Posts</span>
+          <Icon name="tabler:arrow-narrow-right" />
+        </Link>
+      </div>
+    )
+  }
+</RootLayout>

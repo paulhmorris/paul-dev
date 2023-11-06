@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+// import ListLayout from "~/layouts/ListLayout.astro";
+import type { GetStaticPathsOptions, Page } from "astro";
+import { ITEMS_PER_PAGE } from "~/consts";
+import { excludeDrafts, sortBlogPosts } from "~/functions";
+import ListWithTagsLayout from "../../layouts/ListWithTagsLayout.astro";
+
+interface Props {
+  page: Page;
+}
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
+  return paginate(posts, { pageSize: ITEMS_PER_PAGE });
+}
+
+const { page } = Astro.props;
+---
+
+<ListWithTagsLayout title="Blog" page={page} description="Read my thoughts on JavaScript, the Web, and programming." />

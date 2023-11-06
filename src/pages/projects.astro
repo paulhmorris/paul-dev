@@ -1,0 +1,28 @@
+---
+import mm from "~/assets/mm.png";
+import Card from "~/components/Card.astro";
+import PageHeading from "~/components/common/PageHeading.astro";
+import RootLayout from "~/layouts/RootLayout.astro";
+
+const projectsData = [
+  {
+    title: "Machine Manager",
+    description: `A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript. Click "admin" and log in with username "tmfd@remix.run" and password "password". Go to Invoices and finish the open invoice. Try adding various charges!`,
+    img: mm,
+    href: "https://www.google.com",
+  },
+];
+---
+
+<RootLayout title="Projects" description="Some projects that I'm proud of.">
+  <div class="divide-y divide-gray-200 dark:divide-gray-700">
+    <div class="space-y-2 pb-8 pt-6 md:space-y-5">
+      <PageHeading>Projects</PageHeading>
+    </div>
+    <div class="container py-12">
+      <div class="flex gap-8">
+        {projectsData.map((d) => <Card title={d.title} description={d.description} img={d.img} href={d.href} />)}
+      </div>
+    </div>
+  </div>
+</RootLayout>

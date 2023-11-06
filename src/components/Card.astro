@@ -1,0 +1,54 @@
+---
+import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import { cn } from "~/functions";
+import Link from "./Link.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  img?: ImageMetadata;
+  href?: string;
+}
+
+const { title, description, img, href } = Astro.props;
+---
+
+<div class="max-w-md">
+  <div class:list={cn(img && "h-full", "overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700")}>
+    {
+      img &&
+        (href ? (
+          <Link href={href} aria-label={`Link to ${title}`}>
+            <Image alt={title} src={img} class="object-cover object-center md:h-36 lg:h-48" width={544} height={306} />
+          </Link>
+        ) : (
+          <Image alt={title} src={img} class="object-cover object-center md:h-36 lg:h-48" width={544} height={306} />
+        ))
+    }
+    <div class="p-6">
+      <h2 class="mb-3 text-2xl font-bold leading-8 tracking-tight">
+        {
+          href ? (
+            <Link href={href} aria-label={`Link to ${title}`}>
+              {title}
+            </Link>
+          ) : (
+            title
+          )
+        }
+      </h2>
+      <slot />
+      <p class="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+      {
+        href && (
+          <Link href={href} class="group flex items-center gap-1 text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label={`Link to ${title}`}>
+            <span>Learn more</span>
+            <Icon name="tabler:arrow-narrow-right" class="transition duration-100 group-hover:translate-x-1" />
+          </Link>
+        )
+      }
+    </div>
+  </div>
+</div>

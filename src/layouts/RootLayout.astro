@@ -1,0 +1,31 @@
+---
+import "@fontsource-variable/space-grotesk";
+import BaseHead from "~/components/BaseHead.astro";
+import Footer from "~/components/Footer.astro";
+import Header from "~/components/Header.astro";
+import SectionContainer from "~/components/SectionContainer.astro";
+
+import { SITE_META } from "~/consts";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<html lang={SITE_META.language} class="scroll-smooth text-lg sm:text-base">
+  <BaseHead title={title} description={description} />
+  <body class="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
+    <SectionContainer>
+      <div class="flex h-screen flex-col justify-between font-sans">
+        <Header />
+        <main class="mb-auto">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </SectionContainer>
+  </body>
+</html>

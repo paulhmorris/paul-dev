@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "~/functions";
+
+type IconProps = Parameters<typeof Icon>[0];
+
+interface Props extends Omit<HTMLAttributes<"a">, keyof IconProps>, IconProps {
+  name: `tabler:${string}`;
+  alt: string;
+}
+
+const { name, alt, href, class: className, ...rest } = Astro.props;
+---
+
+<a class="text-sm text-gray-500 transition hover:text-gray-600" target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+  <span class="sr-only">{alt}</span>
+  <Icon name={name} class={cn(`fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400`, className)} />
+</a>

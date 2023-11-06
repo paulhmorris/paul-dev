@@ -1,0 +1,15 @@
+---
+import { type CollectionEntry } from "astro:content";
+import Link from "./Link.astro";
+
+interface Props {
+  name?: CollectionEntry<"tags">["data"]["name"];
+  slug?: CollectionEntry<"tags">["slug"];
+}
+
+const { slug, name } = Astro.props;
+---
+
+<Link href={`/tags/${slug}`} class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+  {name}
+</Link>

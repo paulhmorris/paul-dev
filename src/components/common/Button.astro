@@ -1,0 +1,35 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+import { cn } from "~/functions";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  size?: "md" | "lg";
+  style?: "outline" | "accent" | "primary";
+};
+
+const { size = "md", style = "primary", class: className, ...rest } = Astro.props;
+const Tag = Astro.props.as ?? "button";
+
+const sizes = {
+  md: "px-5 py-2.5",
+  lg: "px-6 py-3",
+};
+
+const styles = {
+  primary: "bg-primary text-white hover:bg-secondary border-2 border-transparent ring-primary",
+  accent: "bg-accent text-white hover:bg-accent-light active:bg-accent border-2 border-transparent ring-accent focus-visible:outline-accent",
+  outline: "bg-transparent text-primary border-2 border-primary ring-primary",
+};
+---
+
+<Tag
+  class={cn(
+    "w-full select-none rounded-md text-center font-medium transition duration-75 sm:w-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    styles[style as keyof typeof styles],
+    sizes[size as keyof typeof sizes],
+    className,
+  )}
+  {...rest}
+>
+  <slot />
+</Tag>
