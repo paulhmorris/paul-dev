@@ -6,7 +6,6 @@ const authors = defineCollection({
     name: z.string(),
     email: z.string().email(),
     occupation: z.string(),
-    avatar: z.string().optional(),
     company: z.string().optional(),
     x: z.string().url().optional(),
     linkedin: z.string().url().optional(),
