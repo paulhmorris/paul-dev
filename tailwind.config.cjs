@@ -38,7 +38,7 @@ module.exports = {
               fontWeight: "600",
             },
             code: {
-              color: theme("colors.indigo.500"),
+              color: theme("colors.primary.500"),
             },
           },
         },

@@ -43,8 +43,8 @@ const { title, description, img, href } = Astro.props;
       <p class="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
       {
         href && (
-          <Link href={href} class="group flex items-center gap-1 text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label={`Link to ${title}`}>
-            <span>Learn more</span>
+          <Link href={href} class="group flex items-center gap-1 text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-500">
+            <span>See it in action</span>
             <Icon name="tabler:arrow-narrow-right" class="transition duration-100 group-hover:translate-x-1" />
           </Link>
         )
