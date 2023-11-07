@@ -1,10 +1,19 @@
 /* Code block formatting */
+
+/* Block title */
 div[data-rehype-pretty-code-title] {
-  padding: 1rem;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
   background-color: #e5e7eb;
-  color: #000;
-  font-family: monospace;
+}
+
+/* Blocks that have a title */
+div[data-rehype-pretty-code-fragment] > div[data-rehype-pretty-code-title] + pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 div[data-rehype-pretty-code-fragment] pre {
