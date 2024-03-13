@@ -4,7 +4,6 @@ import { getEntries, type CollectionEntry } from "astro:content";
 import FormattedDate from "~/components/FormattedDate.astro";
 import Link from "~/components/Link.astro";
 import PageTitle from "~/components/PageTitle.astro";
-import ScrollToTop from "~/components/ScrollToTop.astro";
 import SectionContainer from "~/components/SectionContainer.astro";
 import Tag from "~/components/Tag.astro";
 import "~/styles/blog.css";
@@ -27,7 +26,7 @@ const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 <RootLayout title={post.data.title} description={post.data.summary}>
   <SectionContainer>
-    <ScrollToTop />
+    <!-- <ScrollToTop /> -->
     <article>
       <div class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
         <header class="pt-6 xl:pb-6">

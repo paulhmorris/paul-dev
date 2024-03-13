@@ -1,13 +1,21 @@
 ---
 import mm from "~/assets/mm.png";
+import np from "~/assets/np.png";
 import Card from "~/components/Card.astro";
 import PageHeading from "~/components/common/PageHeading.astro";
 import RootLayout from "~/layouts/RootLayout.astro";
 
 const projectsData = [
   {
+    title: "NonProfit Ally",
+    description:
+      'A production fullstack Remix application that I built for a local nonprofit. It\'s a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It\'s built on TypeScript, Prisma, and Zod and is hosted on Vercel. Login with "paul@remix.run" and "password" and take a look around!',
+    img: np,
+    href: "https://np-ally-staging.vercel.app",
+  },
+  {
     title: "Machine Manager",
-    description: `A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript. Click "admin" and log in with username "tmfd@remix.run" and password "password". Go to Invoices and finish the open invoice. Try adding various charges!`,
+    description: `A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages TypeScript, Prisma, and Zod. Login and check out the invoices section. Try creating a new invoice and adding various charges!`,
     img: mm,
     href: "https://machine-management.vercel.app",
   },
@@ -20,7 +28,7 @@ const projectsData = [
       <PageHeading>Projects</PageHeading>
     </div>
     <div class="container py-12">
-      <div class="flex gap-8">
+      <div class="flex flex-wrap gap-8">
         {projectsData.map((d) => <Card title={d.title} description={d.description} img={d.img} href={d.href} />)}
       </div>
     </div>

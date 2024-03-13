@@ -13,9 +13,6 @@ module.exports = {
         13: "3.25rem",
         14: "3.5rem",
       },
-      fontFamily: {
-        sans: ["Space Grotesk Variable", ...fontFamily.sans],
-      },
       colors: {
         primary: colors.indigo,
         gray: colors.gray,

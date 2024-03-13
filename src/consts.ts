@@ -15,7 +15,6 @@ export const SITE_META = {
   siteLogo: "/static/images/logo.png",
   socialBanner: "/static/images/twitter-card.png",
   locale: "en-US",
-  x: "https://x.com/paulmorris27",
   email: "paul@paulmorris.dev",
   github: "https://github.com/paulhmorris",
   linkedin: "https://www.linkedin.com/in/paulmorris27",

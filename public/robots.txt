@@ -1,0 +1,7 @@
+User-Agent: *
+Sitemap: https://paulmorris.dev/sitemap-index.xml
+
+Disallow: /tags
+Disallow: /tags/*
+Disallow: /blog
+Disallow: /blog/*

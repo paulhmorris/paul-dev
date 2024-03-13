@@ -2,18 +2,18 @@
 import Link from "~/components/Link.astro";
 import SocialIcon from "~/components/SocialIcon.astro";
 import { SITE_META } from "~/consts";
-const { email, github, linkedin, x } = SITE_META;
+const { email, github, linkedin } = SITE_META;
 ---
 
 <footer>
   <div class="mt-16 flex flex-col items-center">
     <div class="mb-3 flex space-x-4">
-      <SocialIcon name="tabler:mail-heart" href={`mailto:${email}`} alt="Send me an email" class="h-4 w-4 text-gray-500" />
-      <SocialIcon name="tabler:brand-github" href={github} alt="Follow me on Github" class="h-4 w-4 text-gray-500" />
-      <SocialIcon name="tabler:brand-linkedin" href={linkedin} alt="Follow me on LinkedIn" class="h-4 w-4 text-gray-500" />
-      <SocialIcon name="tabler:brand-x" href={x} alt="Follow me on X" class="h-4 w-4 text-gray-500" />
+      <SocialIcon name="tabler:mail-heart" href={`mailto:${email}`} alt="Send me an email" class="size-6 text-gray-500" />
+      <SocialIcon name="tabler:brand-github" href={github} alt="Follow me on Github" class="size-6 text-gray-500" />
+      <SocialIcon name="tabler:brand-linkedin" href={linkedin} alt="Follow me on LinkedIn" class="size-6 text-gray-500" />
+      <!-- <SocialIcon name="tabler:brand-x" href={x} alt="Follow me on X" class="size-6 text-gray-500" /> -->
     </div>
-    <div class="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+    <div class="mb-2 flex space-x-2 text-gray-500 dark:text-gray-400">
       <Link href="/about">{SITE_META.author}</Link>
       <div>{` • `}</div>
       <div>{`© ${new Date().getFullYear()}`}</div>

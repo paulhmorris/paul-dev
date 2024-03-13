@@ -7,14 +7,14 @@ import { SITE_META } from "~/consts";
 import { excludeDrafts, sortBlogPosts } from "~/functions";
 import RootLayout from "~/layouts/RootLayout.astro";
 
-const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
+// const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
 ---
 
 <RootLayout title={SITE_META.title} description={SITE_META.description}>
   <div>
     <div class="space-y-8 sm:pt-6">
       <PageHeading>Hey!</PageHeading>
-      <p class="text-lg leading-7 text-gray-600 dark:text-gray-400">
+      <p class="text-lg tracking-normal text-gray-600 dark:text-gray-400">
         I’m Paul, a software engineer based in Dallas, TX. I'm building web applications for Tide Cleaners that are used by thousands of customers every day. I'm passionate about the Web and using The Platform to build performant,
         resilient, and scalable experiences. When I'm not coding, I'm probably playing guitar, biking, or hanging out with my family.
       </p>
@@ -30,12 +30,19 @@ const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
 
     <section class="mt-6 sm:mt-12">
       <h2 class="mb-4 text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-3xl">Projects</h2>
-      <Card title="Machine Manager" href="https://machine-management.vercel.app/">
-        <p class="prose text-gray-500 dark:text-gray-400">A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript.</p>
-        <p class="prose mt-2 text-gray-500 dark:text-gray-400">
-          Click "admin" and log in with username <code>tmfd@remix.run</code> and password <code>password</code>. Go to Invoices and finish the open invoice. Try adding various charges!
-        </p>
-      </Card>
+      <div class="flex flex-wrap items-start gap-4">
+        <Card title="NonProfit Ally" href="https://np-ally-staging.vercel.app">
+          <p class="prose text-gray-500 dark:text-gray-400">
+            This is a production fullstack Remix application that I built for a local nonprofit. It's a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It's built on TypeScript, Prisma, and
+            Zod and is hosted on Vercel.
+          </p>
+          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Login with "paul@remix.run" and "password" and have a look around!</p>
+        </Card>
+        <Card title="Machine Manager" href="https://machine-management.vercel.app">
+          <p class="prose text-gray-500 dark:text-gray-400">A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript.</p>
+          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Login and check out the invoices section. Try creating a new invoice and adding various charges!</p>
+        </Card>
+      </div>
     </section>
 
     <!-- <section class="mt-12 sm:mt-24">
