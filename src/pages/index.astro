@@ -1,10 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import Card from "~/components/Card.astro";
 
 import PageHeading from "~/components/common/PageHeading.astro";
 import { SITE_META } from "~/consts";
-import { excludeDrafts, sortBlogPosts } from "~/functions";
 import RootLayout from "~/layouts/RootLayout.astro";
 
 // const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
@@ -19,7 +17,7 @@ import RootLayout from "~/layouts/RootLayout.astro";
         scalable experiences. When I'm not coding, I'm probably playing guitar, biking, or hanging out with my family.
       </p>
       <div>
-        <a href="/Paul Morris - Software Engineer.pdf" download class="font-medium text-primary-500 dark:text-primary-400">Download my resume 👋🏼</a>
+        <a href="/Paul Morris - Software Engineer.pdf" download class="font-medium text-primary-500 dark:text-primary-400" data-umami-event="download-resume">Download my resume 👋🏼</a>
       </div>
       <div>
         <p class="font-medium text-primary-500 dark:text-primary-400">Using</p>
