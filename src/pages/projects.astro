@@ -1,5 +1,4 @@
 ---
-import mm from "~/assets/mm.png";
 import np from "~/assets/np.png";
 import Card from "~/components/Card.astro";
 import PageHeading from "~/components/common/PageHeading.astro";
@@ -9,15 +8,15 @@ const projectsData = [
   {
     title: "NonProfit Ally",
     description:
-      'A production fullstack Remix application that I built for a local nonprofit. It\'s a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It\'s built on TypeScript, Prisma, and Zod and is hosted on Vercel. Login with "paul@remix.run" and "password" and take a look around!',
+      'A production multitenant fullstack Remix application that I built for a local nonprofit. It\'s a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It\'s built on TypeScript, Prisma, and Zod and is hosted on Vercel. Login with "testuser@remix.run" and "password123" and take a look around!',
     img: np,
     href: "https://np-ally-staging.vercel.app",
   },
   {
-    title: "Machine Manager",
-    description: `A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages TypeScript, Prisma, and Zod. Login and check out the invoices section. Try creating a new invoice and adding various charges!`,
-    img: mm,
-    href: "https://machine-management.vercel.app",
+    title: "Worship Devo",
+    description: `A fullstack Remix application for consuming daily audio content from The Worship Initiative. Built with TypeScript and Prisma, and hosted on AWS using ECS, S3, and Cloudfront. Sign up (it's free) and see how we attempted to recreate a native mobile listening experience in the browser. This project is intended for mobile devices only.`,
+    img: "https://d3v3t4lx91fuvw.cloudfront.net/images/og-image.png",
+    href: "https://devo.theworshipinitiative.com",
   },
 ];
 ---

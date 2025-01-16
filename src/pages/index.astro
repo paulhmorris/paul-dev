@@ -4,8 +4,6 @@ import Card from "~/components/Card.astro";
 import PageHeading from "~/components/common/PageHeading.astro";
 import { SITE_META } from "~/consts";
 import RootLayout from "~/layouts/RootLayout.astro";
-
-// const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
 ---
 
 <RootLayout title={SITE_META.title} description={SITE_META.description}>
@@ -13,8 +11,8 @@ import RootLayout from "~/layouts/RootLayout.astro";
     <div class="space-y-8 sm:pt-6">
       <PageHeading>Hey!</PageHeading>
       <p class="text-lg tracking-normal text-gray-600 dark:text-gray-400">
-        I’m Paul, a software engineer based in Dallas, TX. I'm building web applications for Tide Cleaners that are used by thousands of customers every day. I'm passionate about using the Web Platform to build performant, resilient, and
-        scalable experiences. When I'm not coding, I'm probably playing guitar, biking, or hanging out with my family.
+        I’m Paul, a software engineer based in Dallas, TX. I'm building web applications for Portion Capital that solve business needs for our portfolio companies. I'm passionate about using the Web Platform to build performant, resilient,
+        and scalable experiences. When I'm not coding, I'm probably playing guitar or piano, biking, or hanging out with my family.
       </p>
       <div>
         <a href="/Paul Morris - Software Engineer.pdf" download class="font-medium text-primary-500 dark:text-primary-400" data-umami-event="download-resume">Download my resume 👋🏼</a>
@@ -25,7 +23,7 @@ import RootLayout from "~/layouts/RootLayout.astro";
       </div>
       <div>
         <p class="font-medium text-primary-500 dark:text-primary-400">Learning</p>
-        <p class="tracking-wide">Go | AWS | Astro</p>
+        <p class="tracking-wide">Go | AWS</p>
       </div>
     </div>
 
@@ -34,77 +32,16 @@ import RootLayout from "~/layouts/RootLayout.astro";
       <div class="flex flex-wrap items-start gap-4">
         <Card title="NonProfit Ally" href="https://np-ally-staging.vercel.app">
           <p class="prose text-gray-500 dark:text-gray-400">
-            This is a production fullstack Remix application that I built for a local nonprofit. It's a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It's built on TypeScript, Prisma, and
-            Zod and is hosted on Vercel.
+            A production multitenant fullstack Remix application that I built for a local nonprofit. It's a CRM that allows them to track their donors, staff account balances, and reimbursement requests. It's built on TypeScript, Prisma,
+            and Zod and is hosted on Vercel.
           </p>
-          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Login with <code>paul@remix.run</code> and <code>password</code> and have a look around!</p>
+          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Login with <code>testuser@remix.run</code> and <code>password123</code> and have a look around!</p>
         </Card>
-        <Card title="Machine Manager" href="https://machine-management.vercel.app">
-          <p class="prose text-gray-500 dark:text-gray-400">A fullstack Remix application for tracking physical assets that was intended to replace a legacy internal tool. It primarily leverages Prisma, Zod, and TypeScript.</p>
-          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Login and check out the invoices section. Try creating a new invoice and adding various charges!</p>
+        <Card title="Worship Devo" href="https://devo.theworshipinitiative.com">
+          <p class="prose text-gray-500 dark:text-gray-400">A fullstack Remix application for consuming daily audio content from The Worship Initiative. Built with TypeScript and Prisma, and hosted on AWS using ECS, S3, and Cloudfront.</p>
+          <p class="prose mt-2 text-gray-500 dark:text-gray-400">Sign up (it&apos;s free) and see how we attempted to recreate a native listening experience in the browser.</p>
         </Card>
       </div>
     </section>
-
-    <!-- <section class="mt-12 sm:mt-24">
-      <h2 class="mb-4 text-xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-3xl">Blog</h2>
-      <ul class="divide-y divide-gray-200 dark:divide-gray-700">
-        {
-          posts.length
-            ? posts.slice(0, ITEMS_PER_PAGE).map((post) => {
-                const { date, title, summary, tags } = post.data;
-                return (
-                  <li class="py-4 first:-mt-4">
-                    <article>
-                      <div class="space-y-2 xl:grid xl:grid-cols-7 xl:items-baseline xl:space-y-0">
-                        <dl>
-                          <dt class="sr-only">Published on</dt>
-                          <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                            <FormattedDate date={date} />
-                          </dd>
-                        </dl>
-                        <div class="space-y-5 xl:col-span-4">
-                          <div class="space-y-6">
-                            <div>
-                              <h2 class="text-2xl font-bold leading-8 tracking-tight">
-                                <Link href={`/blog/${post.slug}`} class="text-gray-900 dark:text-gray-100">
-                                  {title}
-                                </Link>
-                              </h2>
-                              <div class="flex flex-wrap">
-                                {tags.map(({ slug }) => (
-                                  <Tag slug={slug} />
-                                ))}
-                              </div>
-                            </div>
-                            <div class="prose max-w-none text-gray-500 dark:text-gray-400">{summary}</div>
-                          </div>
-                          <div class="text-base font-medium leading-6">
-                            <Link href={`/blog/${post.slug}`} class="group flex items-center gap-1 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label={`Read "${title}"`}>
-                              <span>Read more</span>
-                              <Icon name="tabler:arrow-narrow-right" class="transition duration-100 group-hover:translate-x-1" />
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </li>
-                );
-              })
-            : null
-        }
-      </ul>
-    </section>
-  </div>
-  {
-    posts.length > ITEMS_PER_PAGE && (
-      <div class="flex justify-end text-base font-medium leading-6">
-        <Link href="/blog" class="flex items-center gap-1 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400" aria-label="All posts">
-          <span>All Posts</span>
-          <Icon name="tabler:arrow-narrow-right" />
-        </Link>
-      </div>
-    )
-  } -->
   </div>
 </RootLayout>

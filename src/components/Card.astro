@@ -8,7 +8,7 @@ import Link from "./Link.astro";
 interface Props {
   title: string;
   description?: string;
-  img?: ImageMetadata;
+  img?: ImageMetadata | string;
   href?: string;
 }
 
@@ -21,10 +21,12 @@ const { title, description, img, href } = Astro.props;
       img &&
         (href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
-            <Image alt={title} src={img} class="object-cover object-center md:h-36 lg:h-48" width={544} height={306} />
+            {typeof img === "string" ? <img alt={title} src={img} class="object-cover" /> : <Image alt={title} src={img} class="object-cover" width={544} height={306} />}
           </Link>
+        ) : typeof img === "string" ? (
+          <img alt={title} src={img} class="object-cover" />
         ) : (
-          <Image alt={title} src={img} class="object-cover object-center md:h-36 lg:h-48" width={544} height={306} />
+          <Image alt={title} src={img} class="object-cover" width={544} height={306} />
         ))
     }
     <div class="p-6">
