@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
 import avatar from "~/assets/avatar.png";
-import SocialIcon from "~/components/SocialIcon.astro";
 import PageHeading from "~/components/common/PageHeading.astro";
 import RootLayout from "~/layouts/RootLayout.astro";
 
@@ -23,12 +22,6 @@ const { name, occupation, company, email, github, linkedin, x } = author.data;
         <h3 class="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
         <div class="text-gray-500 dark:text-gray-400">{occupation}</div>
         <div class="text-gray-500 dark:text-gray-400">{company}</div>
-        <div class="flex space-x-3 pt-6">
-          <SocialIcon name="tabler:mail-heart" href={`mailto:${email}`} alt="Send me an email" />
-          <SocialIcon name="tabler:brand-github" href={github} alt="Follow me on Github" />
-          <SocialIcon name="tabler:brand-linkedin" href={linkedin} alt="Follow me on LinkedIn" />
-          <SocialIcon name="tabler:brand-x" href={x} alt="Follow me on X" />
-        </div>
       </div>
       <div class="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
         <Content />

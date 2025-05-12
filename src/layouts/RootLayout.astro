@@ -1,4 +1,5 @@
 ---
+import "@fontsource-variable/geist-mono";
 import BaseHead from "~/components/BaseHead.astro";
 import Footer from "~/components/Footer.astro";
 import Header from "~/components/Header.astro";
@@ -16,9 +17,9 @@ const { title, description } = Astro.props;
 
 <html lang={SITE_META.language} class="scroll-smooth text-lg sm:text-base">
   <BaseHead title={title} description={description} />
-  <body class="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
+  <body class="bg-white font-mono text-black antialiased dark:bg-gray-900 dark:text-white">
     <SectionContainer>
-      <div class="flex h-screen flex-col justify-between font-sans">
+      <div class="flex h-screen flex-col justify-between">
         <Header />
         <main class="mb-auto">
           <slot />
